@@ -1,0 +1,110 @@
+const green = "#10BF45",
+      red   = "#Bf1020",
+      black = "#000000";
+
+function start() {
+  console.log('START');
+}
+
+window.onload = start;
+
+//-----------------------------------------------------
+/* Odczytanie stanu wszystkich LED */
+function getInputStatus() {
+  nocache = "&nocache=" + Math.random() * 1000000;
+  var request = new XMLHttpRequest();
+
+  request.onreadystatechange = function() {
+    if(this.readyState == 4 && this.status == 200 && this.responseText != null) {
+      const msg = this.responseText;
+
+      var handler1 = document.getElementById('InputBtn1');
+      if(msg.include('11'))                       //input 1 is ON
+        handler1.style.background = green;
+      else if(msg.include('10'))                  //input 1 is OFF
+        handler1.style.background = red;
+      else handler1.style.background = black;     //state of input 1 is unknown
+
+      var handler2 = document.getElementById('InputBtn2');
+      if(msg.include('21'))
+        handler2.style.background = green;
+      else if(msg.include('20'))
+        handler2.style.background = red;
+      else handler2.style.background = black;
+
+      var handler3 = document.getElementById('InputBtn3');
+      if(msg.include('31'))
+        handler3.style.background = green;
+      else if(msg.include('30'))
+        handler3.style.background = red;
+      else handler3.style.background = black;
+
+      var handler4 = document.getElementById('InputBtn4');
+      if(msg.include('41'))
+        handler4.style.background = green;
+      else if(msg.include('40'))
+        handler4.style.background = red;
+      else handler4.style.background = black;
+
+    }
+  };
+
+  request.open("GET", "led.html?A" + nocache, true);
+  request.send(null);
+
+  setTimeout("getInputStatus()", 5000);
+}
+
+//-----------------------------------------------------
+/* Sterowanie przekaźnikami */
+function setLEDState(val) {
+  nocache = "&nocache=" + Math.random() * 1000000;
+  var request = new XMLHttpRequest();
+
+  request.onreadystatechange = function() {
+    if(this.readyState == 4 && this.status == 200 && this.responseText != null) {
+      var msg = this.responseText;
+      var elementHandler = document.getElementById('setLEDBtn'+val);
+
+      if(msg.include('setled.html?r='+val+'_On')) {
+        elementHandler.style.background = green;
+        elementHandler.setAttribute('value', 'Przekaźnik '+val+' ON');
+      }
+      else if(msg.include('setled.html?r='+val+'_Of')) {
+        elementHandler.style.background = red;
+        elementHandler.setAttribute('value', 'Przekaźńik '+val+' OFF');
+      }
+      else {
+        console.log('Error: Didn\'t get a proper response or any response');
+        elementHandler.style.background = "#000000";
+        elementHandler.style.color = "#FFFFFF";
+        elementHandler.setAttribute('value', 'ERROR');
+      }
+    }
+    else console.log('Error: Couldn\'t establish a connection. XHR request blocked.');
+  };
+
+  request.open('GET', 'setled.html?r='+val+nocache, true);
+  request.send(null);
+}
+
+//-----------------------------------------------------
+//Odczyt liczby 8 bit
+function loadTempFromDevice() {
+  nocache = "&nocache=" + Math.random() * 1000000;
+  var request = new XMLHttpRequest();
+  request.onreadystatechange = function(){
+    if(this.readyState == 4) {
+      if(this.status == 200) {
+        if(this.responseText != null) {
+          var msg = this.responseText;
+          var msgToDisplay = msg.substring(17, 21);
+          document.getElementById("readedTempLbl").innerHTML = "Temperatura: " + msgToDisplay;
+        }
+      }
+    }
+  };
+  request.open("GET", "temp.html?T=" + nocache, true);
+  request.send(null);
+
+}

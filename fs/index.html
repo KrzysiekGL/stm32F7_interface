@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" href="style.css">
+
+    <script src="controller.js"></script>
+
+  </head>
+
+  <body>
+
+    <div id="container">
+      <div id="header">
+      <h1>STM32F7</h1>
+      <h2>Interface</h2>
+    </div>
+
+    <div id="setLEDsDiv">
+      <div id="setLEDsLabel">Set LED state:</div>
+      <div class="LEDBtn" id="LEDBtn1" onclick="setLEDState(1);">1</div>
+      <div class="LEDBtn" id="LEDBtn2" onclick="setLEDState(2);">2</div>
+      <div class="LEDBtn" id="LEDBtn3" onclick="setLEDState(3);">3</div>
+      <div class="LEDBtn" id="LEDBtn4" onclick="setLEDState(4);">4</div>
+      <div class="LEDBtn" id="LEDBtn5" onclick="setLEDState(5);">5</div>
+      <div style="clear: both;"></div>
+    </div>
+
+    <div id="sendData">
+      <div id="dataInput"><input id="data" type="number" name="data" maxlenght="4" size="4" /></div>
+      <div id="dataSend"><input type="submit" value="Send to STM" onclick="sendData();" /></div>
+    </div>
+
+    <div id="readData">
+      <div class="readLabel"><button onclick="loadTempFromDevice();">Temperature</button></div>
+      <div id="readTemp">xxxx</div>
+      <div style="clear: both;"></div>
+
+      <div class="readLabel"><button onclick="loadPotFromDevice();">Potentiometer</button></div>
+      <div id="readPot">xxxx</div>
+      <div style="clear: both;"></div>
+    </div>
+
+    <div id="monit">
+      <div id="statement">State: unknown</div>
+      <div id="statementcolor"></div>
+      <div id='setThread'><button onclick="thread();" id="threadBtn">Turn ON thread</button></div>
+    </div>
+
+  </div>
+
+  </body>
+</html>

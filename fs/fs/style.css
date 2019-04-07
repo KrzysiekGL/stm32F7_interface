@@ -1,0 +1,89 @@
+body {
+  background-color: #002020;
+}
+
+#container {
+  width: 900px;
+  min-height: 350px;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #8AB4BF;
+  text-align: center;
+  border: 3px solid #FF7AC6;
+  border-radius: 25px;
+  background-color: #003333;
+}
+
+h1 {
+  color: #D06771;
+  font-size: 48px;
+}
+
+h2 {
+  color: #D06269;
+  font-size: 34px;
+}
+
+#setLEDsDiv {
+  width: 220px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #FF7AC6;
+  border-radius: 25px;
+  text-align: center;
+}
+
+#setLEDsLabel {
+  width: 176px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.LEDBtn {
+  float: left;
+  display: inline-block;
+  background-color: #000000;
+  width: 20px;
+  height: 20px;
+  margin: 10px;
+  border: 2px solid #111111;
+  border-radius: 15px;
+}
+
+.LEDBtn:hover {
+  cursor: pointer;
+}
+
+#sendData {
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border: 2px solid #FF7AC6;
+  border-radius: 25px;
+}
+
+#dataInput {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#dataSend {
+  margin-bottom: 10px;
+}
+
+#readData {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 50px;
+  border: 2px solid #FF7AC6;
+  border-radius: 25px;
+}
+
+.readLabel {
+  float: left;
+  margin-left: 25px;
+}

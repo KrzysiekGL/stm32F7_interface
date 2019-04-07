@@ -1,0 +1,76 @@
+body {
+  background-color: #333333; 
+}
+#page {
+  width: 960px;
+  margin: 0 auto;
+}
+#header {
+  background-color: #7A7777; 
+  background-blend-mode: ;
+  height: 100px;
+}
+#content::before, #content::after {
+  content: "";
+  display: table;
+}
+#content::after {
+  clear: both;
+}
+#content {
+  background-color: #C4C4C4; 
+  zoom: 1;
+}
+#article {
+  background-color: rgba(255,255,255,.7);
+  width: 720px;
+  padding: 20px;
+  float: left;
+}
+#sidebar {
+  width: 200px;
+  float: left;
+}
+#sidebar ul li {
+  color: #8f8;
+}
+#footer {
+  background-color: #330033;
+  height: 100px;
+  padding: 20px;
+}
+#footer p {
+  color: #0ff;
+}
+
+.butcenter {
+  text-align: center;
+}
+
+.butcolor {
+  width: 150px;
+  height: 48px;
+  font-size: 17px;
+}
+
+.butcharstyledef {
+  width: 250px;
+  height: 48px;
+  font-size: 17px;
+}
+
+.butleft {
+  text-align: left;
+}
+
+.butReadData {
+  width: 200px;
+  height: 30px;
+  font-size: 15px;
+}
+
+.controlRelayBtn {
+  width: 170px;
+  height:  30px;
+  font-size: 14px;
+}
