@@ -1,17 +1,11 @@
-//[TODO] - Zapalanie diod         
-
 const green = "#10BF45",
       red   = "#Bf1020",
-      black = "#000000";
+      black = "#000000",
+      fontC = "#8AB4BF";
 
 function start() {
   console.log('Starting....');
   monitor();
-
-  //TEST
-  // handler = document.getElementById('monit');
-  // handler.innerHTML = "TU JEST TEXT";
-  // handler.style.background = red;
 }
 
 window.onload = start;
@@ -30,17 +24,16 @@ function setLEDState(val) {
 
       if(msg.includes('setled.html?r='+val+'_On')) {
         elementHandler.style.background = green;
-        elementHandler.setAttribute('value', 'Przekaźnik '+val+' ON');
+        elementHandler.style.color = black;
       }
       else if(msg.includes('setled.html?r='+val+'_Of')) {
         elementHandler.style.background = red;
-        elementHandler.setAttribute('value', 'Przekaźńik '+val+' OFF');
+        elementHandler.style.color = fontC;
       }
       else {
         console.log('Error: Didn\'t get a proper response or any response');
         elementHandler.style.background = "#000000";
         elementHandler.style.color = "#FFFFFF";
-        elementHandler.setAttribute('value', 'ERROR');
       }
     }
     else {
@@ -63,6 +56,7 @@ function setLEDState(val) {
 
 function sendData() {
   var data = document.getElementById('data').value;
+  var handler = document.getElementById('confirmSend');
 
   if(data.charAt(0) == '0') data = '0000';
   else if(data > 9999) data = '9999';
@@ -76,13 +70,18 @@ function sendData() {
 
   request.onreadystatechange = function() {
     if(this.readyState == 4 && this.status == 200) {
-      if(!(request.responseText.includes('V=n') || request.responseText.includes('V=f'))) {
-        //error
+      if(request.responseText.includes('V=n')) handler.style.background = green;
+      else if(request.responseText.includes('V=f')) handler.style.background = red;
+      else {
+        handler.style.background = red;
         alert('Can\'t determine');
       }
     }
     else {
-      if(request.readyState == 4) alert('XHR ERROR');
+      if(request.readyState == 4) {
+        handler.style.background = red;
+        alert('XHR ERROR');
+      }
     }
   };
 

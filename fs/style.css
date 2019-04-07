@@ -72,6 +72,18 @@ h2 {
 
 #dataSend {
   margin-bottom: 10px;
+  margin-left: 40px;
+  float: left;
+}
+
+#confirmSend {
+  float: left;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #111111;
+  border-radius: 10px;
+  background-color: #000;
+  margin: 5px;
 }
 
 #readData {
