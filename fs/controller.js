@@ -73,13 +73,13 @@ function sendData() {
       if(request.responseText.includes('V=n')) handler.style.background = green;
       else if(request.responseText.includes('V=f')) handler.style.background = red;
       else {
-        handler.style.background = red;
+        handler.style.background = black;
         alert('Can\'t determine');
       }
     }
     else {
       if(request.readyState == 4) {
-        handler.style.background = red;
+        handler.style.background = black;
         alert('XHR ERROR');
       }
     }
@@ -107,7 +107,7 @@ function loadTempFromDevice(){
   request.open("GET", "temp.html?T=" + nocache, true);
   request.send(null);
 
-  //setTimeout("loadTempFromDevice()", 3500);
+  setTimeout("loadTempFromDevice()", 3500);
 }
 
 function loadPotFromDevice(){
@@ -126,7 +126,7 @@ function loadPotFromDevice(){
   request.open("GET", "pot.html?V=" + nocache, true);
   request.send(null);
 
-  //setTimeout("loadPotFromDevice()", 1000);
+  setTimeout("loadPotFromDevice()", 1000);
 }
 //------------------------------------------------------
 //Oczyt stanu (alarmowy/normalny)
@@ -166,7 +166,7 @@ function monitor() {
   xhr.open('GET', 'state.html?S=0'+nocache, true);
   xhr.send();
 
-  //setTimeout("monitor()", 5000);
+  setTimeout("monitor()", 5000);
 }
 
 //------------------------------------------------------
