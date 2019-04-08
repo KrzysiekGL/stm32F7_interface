@@ -6,6 +6,8 @@ const green = "#10BF45",
 function start() {
   console.log('Starting....');
   monitor();
+  loadTempFromDevice();
+  loadPotFromDevice();
 }
 
 window.onload = start;
@@ -91,7 +93,7 @@ function sendData() {
 
 //-----------------------------------------------------
 //Odczyt liczby 8 bit
-function loadTempFromDevice(){
+function loadTempFromDevice() {
   nocache = "&nocache=" + Math.random() * 1000000;
   var request = new XMLHttpRequest();
   request.onreadystatechange = function(){
@@ -110,7 +112,7 @@ function loadTempFromDevice(){
   setTimeout("loadTempFromDevice()", 3500);
 }
 
-function loadPotFromDevice(){
+function loadPotFromDevice() {
   nocache = "&nocache=" + Math.random() * 1000000;
   var request = new XMLHttpRequest();
   request.onreadystatechange = function(){
