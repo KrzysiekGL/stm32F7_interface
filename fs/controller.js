@@ -6,8 +6,8 @@ const green = "#10BF45",
 function start() {
   console.log('Starting....');
   monitor();
-  loadTempFromDevice();
-  loadPotFromDevice();
+  setTimeout("loadTempFromDevice()", 1000);
+  setTimeout("loadPotFromDevice()", 2000);
 }
 
 window.onload = start;
