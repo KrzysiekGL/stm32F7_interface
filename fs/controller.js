@@ -64,7 +64,7 @@ function sendData() {
   else if(data > 9999) data = '9999';
   else if(data > 99 && data <= 999) data = '0' + data;
   else if(data > 9 && data <= 99) data = '00' + data;
-  else if(data < 9 && data >= 0) data = '000' + data;
+  else if(data <= 9 && data >= 0) data = '000' + data;
   else if(data < 0) data = '0000';
 
   nocache = '&nocache=' + Math.random() * 1000000;
